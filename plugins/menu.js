@@ -16,18 +16,13 @@ const defaultMenu = {
 ├ Date: *%week %weton, %date*
 ├ Time: *%time*
 │
-├ Uptime: *%uptime (%muptime)*
-├ Database: %rtotalreg dari %totalreg
-├ 
+|
 └────
 %readmore`.trim(),
   header: '┌─〔 %category 〕',
   body: '├ %cmd %islimit %isPremium',
-  footer: '└────\n',
-  after: `
-*%npmname@^%version*
-${'```%npmdesc```'}
-`,
+  footer: '',
+  after: ``,
 }
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 
