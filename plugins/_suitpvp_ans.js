@@ -28,7 +28,7 @@ click wa.me/${conn.user.jid.split`@`[0]}`, m.chat, {
       })
 
       if (!room.pilih) this.send3Button(room.p, 'Please select', `Win +${room.poin}XP\nLost -${room.poin_lose}XP\nBonus +${room.poin_bot}`, 'Stone🗿', 'Stone', 'Paper📄', 'Paper', 'Scissors✂️', 'Scissors', m)
-      if (!room.pilih2) this.send3Button(room.p2, 'Please select', `Menang +${room.poin}XP\nLost -${room.poin_lose}XP\nBonus +${room.poin_bot}`, 'Stone🗿', 'Stone', 'Paper📄', 'Paper', 'Scissors✂️', 'Scissors', m)
+      if (!room.pilih2) this.send3Button(room.p2, 'Please select', `Win +${room.poin}XP\nLost -${room.poin_lose}XP\nBonus +${room.poin_bot}`, 'Stone🗿', 'Stone', 'Paper📄', 'Paper', 'Scissors✂️', 'Scissors', m)
       room.waktu_milih = setTimeout(() => {
         if (!room.pilih && !room.pilih2) this.sendButton(m.chat, `Both players have no intention of playing,\nLost cancelled`, wm, 'Menu', '.menu', m)
         else if (!room.pilih || !room.pilih2) {
