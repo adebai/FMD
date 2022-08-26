@@ -8,19 +8,17 @@ const defaultMenu = {
 ┌─〔 %me 〕
 ├ *%ucapan %name*
 │
-├ Tersisa *%limit Limit*
+├ Left *%limit Limit*
 ├ Role *%role*
 ├ Level *%level (%exp / %maxexp)* [%xp4levelup]
-├ %totalexp XP secara Total
+├ %totalexp XP in Total
 │
-├ Tanggal: *%week %weton, %date*
-├ Tanggal Islam: *%dateIslamic*
-├ Waktu: *%time*
+├ Date: *%week %weton, %date*
+├ Time: *%time*
 │
 ├ Uptime: *%uptime (%muptime)*
 ├ Database: %rtotalreg dari %totalreg
-├ Github:
-├ %github
+├ 
 └────
 %readmore`.trim(),
   header: '┌─〔 %category 〕',
@@ -35,32 +33,31 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 
   let tags
   let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'game', 'xp', 'stiker', 'kerangajaib', 'quotes', 'admin', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'tanpakategori', 'owner']
+  let arrayMenu = ['all', 'game', 'xp', 'stiker', 'magicclams', 'quotes', 'admin', 'group', 'premium', 'internet', 'anonymous', 'write', 'downloader', 'tools', 'fun', 'database', 'audio', 'sobot', 'info', 'withoutcategories', 'owner']
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all') tags = {
-    'main': 'UTAMA',
+    'main': 'MAIN',
     'game': 'Game',
     'rpg': 'RPG',
     'xp': 'Exp & Limit',
-    'sticker': 'Stiker',
-    'kerang': 'Kerang Ajaib',
+    'sticker': 'Sticker',
+    'magicclams': 'Magic Clams',
     'quotes': 'Quotes',
-    'group': 'Grup',
+    'group': 'Group',
     'premium': 'Premium',
     'internet': 'Internet',
     'anonymous': 'Anonymous Chat',
-    'nulis': 'MagerNulis & Logo',
+    'write': 'Writing Mager & Logo',
     'downloader': 'Downloader',
     'tools': 'Tools',
     'fun': 'Fun',
     'database': 'Database',
     'vote': 'Voting',
-    'absen': 'Absen',
-    'quran': 'Al Qur\'an',
-    'audio': 'Pengubah Suara',
-    'jadibot': 'Jadi Bot',
+    'absent': 'Absent',
+    'audio': 'Voice Changer',
+    'sobot': 'So Bot',
     'info': 'Info',
-    '': 'Tanpa Kategori',
+    '': 'Without categories',
   }
   if (teks == 'game') tags = {
     'game': 'Game',
@@ -69,17 +66,17 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'xp') tags = {
     'xp': 'Exp & Limit'
   }
-  if (teks == 'stiker') tags = {
-    'sticker': 'Stiker'
+  if (teks == 'sticker') tags = {
+    'sticker': 'Sticker'
   }
-  if (teks == 'kerangajaib') tags = {
-    'kerang': 'Kerang Ajaib'
+  if (teks == 'magicclams') tags = {
+    'magicclams': 'Magic Clams'
   }
   if (teks == 'quotes') tags = {
     'quotes': 'Quotes'
   }
   if (teks == 'grup') tags = {
-    'group': 'Grup'
+    'group': 'Group'
   }
   if (teks == 'premium') tags = {
     'premium': 'Premium'
@@ -90,8 +87,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'anonymous') tags = {
     'anonymous': 'Anonymous Chat'
   }
-  if (teks == 'nulis') tags = {
-    'nulis': 'MagerNulis & Logo'
+  if (teks == 'write') tags = {
+    'write': 'Writing Mager & Logo'
   }
   if (teks == 'downloader') tags = {
     'downloader': 'Downloader'
@@ -107,22 +104,19 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   }
   if (teks == 'vote') tags = {
     'vote': 'Voting',
-    'absen': 'Absen'
-  }
-  if (teks == 'quran') tags = {
-    'quran': 'Al Qur\'an'
+    'absent': 'Absent'
   }
   if (teks == 'audio') tags = {
-    'audio': 'Pengubah Suara'
+    'audio': 'Voice Changer'
   }
-  if (teks == 'jadibot') tags = {
-    'jadibot': 'Jadi Bot'
+  if (teks == 'sobot') tags = {
+    'sobot': 'So Bot'
   }
   if (teks == 'info') tags = {
     'info': 'Info'
   }
-  if (teks == 'tanpakategori') tags = {
-    '': 'Tanpa Kategori'
+  if (teks == 'withoutcategories') tags = {
+    '': 'Without Categories'
   }
   if (teks == 'owner') tags = {
     'owner': 'Owner',
@@ -191,27 +185,24 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       {
         title: 'List Menu ' + namabot,
         rows: [
-          { title: 'Semua Perintah', rowId: `${_p}? all` },
+          { title: 'All commands', rowId: `${_p}? all` },
           { title: 'Game', rowId: `${_p}? game` },
           { title: 'XP', rowId: `${_p}? xp` },
           { title: 'Stiker', rowId: `${_p}? stiker` },
-          { title: 'Kerang Ajaib', rowId: `${_p}? kerangajaib` },
           { title: 'Quotes', rowId: `${_p}? quotes` },
-          { title: 'Grup', rowId: `${_p}? grup` },
+          { title: 'Group', rowId: `${_p}? group` },
           { title: 'Premium', rowId: `${_p}? premium` },
           { title: 'Internet', rowId: `${_p}? internet` },
           { title: 'Anonymous', rowId: `${_p}? anonymous` },
-          { title: 'Nulis & Logo', rowId: `${_p}? nulis` },
           { title: 'Downloader', rowId: `${_p}? downloader` },
           { title: 'Tools', rowId: `${_p}? tools` },
           { title: 'Fun', rowId: `${_p}? fun`},
           { title: 'Database', rowId: `${_p}? database` },
-          { title: 'Vote & Absen', rowId: `${_p}? vote` },
-          { title: "Al-Qur\'an", rowId: `${_p}? quran` },
-          { title: 'Pengubah Suara', rowId: `${_p}? audio` },
-          { title: 'Jadi Bot', rowId: `${_p}? jadibot` },
+          { title: 'Vote & Absence', rowId: `${_p}? vote` },
+          { title: 'Voice Changer', rowId: `${_p}? audio` },
+          { title: 'So Bot', rowId: `${_p}? sobot` },
           { title: 'Info', rowId: `${_p}? info` },
-          { title: 'Tanpa Kategori', rowId: `${_p}? tanpakategori` },
+          { title: 'Without Categories', rowId: `${_p}? withoutcategories` },
           { title: 'Owner', rowId: `${_p}? owner` },
         ]
       }
@@ -221,7 +212,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       footer: wm,
       mentions: await conn.parseMention(judul),
       title: '',
-      buttonText: "Klik Disini",
+      buttonText: "Click Here",
       sections
     }
     return conn.sendMessage(m.chat, listMessage, { quoted: m, mentions: await conn.parseMention(judul), contextInfo: { forwardingScore: 99999, isForwarded: true }})
@@ -240,7 +231,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     let header = conn.menu.header || defaultMenu.header
     let body = conn.menu.body || defaultMenu.body
     let footer = conn.menu.footer || defaultMenu.footer
-    let after = conn.menu.after || (conn.user.jid == global.conn.user.jid ? '' : `Dipersembahkan oleh https://wa.me/${global.conn.user.jid.split`@`[0]}`) + defaultMenu.after
+    let after = conn.menu.after || (conn.user.jid == global.conn.user.jid ? '' : `Powered by https://wa.me/${global.conn.user.jid.split`@`[0]}`) + defaultMenu.after
     let _text = [
       before,
       ...Object.keys(tags).map(tag => {
@@ -276,9 +267,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    await conn.send3TemplateButtonImg(m.chat, fla + teks, text.trim(), wm, `🏅Owner`, `${_p}owner`, `🎖ThanksTo`, `${_p}tqto`, `🎗  Donasi  🎗`, `${_p}infobot`)
+    await conn.send3TemplateButtonImg(m.chat, fla + teks, text.trim(), wm, `🏅Owner`, `${_p}owner`, `🎖ThanksTo`, `${_p}tqto`, `🎗   🎗`, `${_p}infobot`)
   } catch (e) {
-    conn.reply(m.chat, 'Maaf, menu sedang error', m)
+    conn.reply(m.chat, 'Sorry, menu has an error', m)
     throw e
   }
 }
@@ -309,19 +300,16 @@ function clockString(ms) {
   return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
 function ucapan() {
-  const time = moment.tz('Asia/Jakarta').format('HH')
-  res = "Selamat dinihari"
-  if (time >= 4) {
-    res = "Selamat pagi"
+  const time = moment.tz('Africa/Lagos').format('HH')
+  res = "Good morning"
+  if (time >= 0) {
+    res = "Good morning"
   }
-  if (time > 10) {
-    res = "Selamat siang"
-  }
-  if (time >= 15) {
-    res = "Selamat sore"
+  if (time >= 12) {
+    res = "Good afternoon"
   }
   if (time >= 18) {
-    res = "Selamat malam"
+    res = "Good evening"
   }
   return res
 }
